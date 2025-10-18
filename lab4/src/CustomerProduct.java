@@ -1,15 +1,27 @@
+
+        // declaring variables
 public class CustomerProduct {
     private String customerSSN;
     private String productID;
     private LocalDate purchaseDate;
     private boolean paid;
 
+            // constructor aalshan n initialize elobjects
     public CustomerProduct(String customerSSN, String productID, LocalDate purchaseDate){
         this.customerSSN=customerSSN;
         this.productID=productID;
         this.purchaseDate=purchaseDate;
         this.paid=false;
     }
+
+         // methods: (7)
+               // nreturn ssn of customer
+               // nreturn id of product
+               // nreturn date of purchase
+               // nktb elinfo f line wahed w comma seperated
+               // nreturn true if paid and false otherwise
+               // nchange payment status
+               // to find the info of the product we're searching for 
 
     public String getCustomerSSN(){
         return customerSSN;

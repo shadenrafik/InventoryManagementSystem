@@ -1,7 +1,7 @@
 package lab4;
 import java.util.*;
 
-public class EmployeeUser {
+public class EmployeeUser implements Record {
     private String employeeId ;
     private String name;
     private String email;
@@ -57,10 +57,11 @@ public class EmployeeUser {
         }
         return true;
     }
+    @Override
     public String lineRepresentation(){
         return employeeId+","+name+","+email+","+address+","+phoneNumber;
     }
-    
+    @Override
     public String getSearchKey(){
         return employeeId;
     }

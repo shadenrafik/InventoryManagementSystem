@@ -1,3 +1,5 @@
 
-public abstract class Record {
+public interface Record {
+    String lineRepresentation();
+    String getSearchKey();
 }

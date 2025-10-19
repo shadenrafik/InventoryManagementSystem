@@ -1,8 +1,8 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-        // declaring variables
-          // LocalDate is a Java object for storing dates (year, month, day) (easier in date calculations and formatting)
-
-public class CustomerProduct {
+// declaring variables
+public class CustomerProduct implements Record {
     private String customerSSN;
     private String productID;
     private LocalDate purchaseDate;
@@ -37,7 +37,6 @@ public class CustomerProduct {
         return purchaseDate;
     }
 
-            // used DateTimeFormatter (this is a class in java that can convert dates into specific text form)
     public String lineRepresentation(){
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return customerSSN + "," + productID + "," + purchaseDate.format(formatter) + "," + paid;
@@ -51,6 +50,7 @@ public class CustomerProduct {
         this.paid=paid;
     }
 
+@Override
     public String getSearchKey(){
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return customerSSN + "," + productID + "," + purchaseDate.format(formatter);

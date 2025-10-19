@@ -1,6 +1,5 @@
-
-       // declaring variables
-public class Product {
+    // declaring variables
+public class Product implements Record {
     private String productID;
     private String productName;
     private String manufacturerName;
@@ -32,10 +31,11 @@ public class Product {
         this.quantity=quantity;
     }
 
+    @Override
     public String lineRepresentation(){
         return productID + "," + productName + "," + manufacturerName + "," + supplierName + "," + quantity + "," + price;
     }
-
+    @Override
     public String getSearchKey(){
         return productID;
     }

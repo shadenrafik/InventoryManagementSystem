@@ -35,6 +35,7 @@ public class CustomerProduct {
         return purchaseDate;
     }
 
+            // used DateTimeFormatter (this is a class in java that can convert dates into specific text form)
     public String lineRepresentation(){
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return customerSSN + "," + productID + "," + purchaseDate.format(formatter) + "," + paid;

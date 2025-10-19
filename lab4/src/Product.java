@@ -39,5 +39,11 @@ public class Product implements Record {
     public String getSearchKey(){
         return productID;
     }
+    public float getPrice() {
+        return price;
+        }
 
-}
+
+
+
+    }

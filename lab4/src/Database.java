@@ -15,7 +15,7 @@ public abstract class Database <T extends Record>{
     public abstract void saveToFile();
 
     //returns array of records
-    public List<T> returnAllRecords() {
+    public ArrayList<T> returnAllRecords() {
         return new ArrayList<>(records);
     }
 

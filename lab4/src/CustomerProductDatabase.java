@@ -1,6 +1,9 @@
 import java.io.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.*;
+import java.time.format.*;
+import java.util.*;
+
+
 
 
 public class CustomerProductDatabase extends Database<CustomerProduct>{
@@ -10,48 +13,48 @@ public class CustomerProductDatabase extends Database<CustomerProduct>{
         super(filename);
     }
 
-    @Override
+
     public void readFromFile(){
         records.clear();
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try{
+            File fptr = new File ("lab4/"+filename);
+            Scanner scan = new Scanner(fptr);
             String line;
-            while ((line = br.readLine()) != null) {
-                records.add(createRecordFrom(line));
+            while(scan.hasNextLine()){
+                line = scan.nextLine();
+                CustomerProduct user = createRecordFrom(line);
+                records.add(user);
             }
+            scan.close();
         }
-        catch (FileNotFoundException e){
-            System.out.println("File not found!");
-        }
-        catch(IOException e){
-            e.printStackTrace();
+        catch(Exception e){
+            System.out.println("Error opening the file ( "+ e.getMessage()+" ).");
         }
     }
 
-      @Override
-        public CustomerProduct createRecordFrom(String line){
-          String[] parts=line.split(",");
-          DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
-          LocalDate date=LocalDate.parse(parts[2],formatter);
-          boolean paid=Boolean.parseBoolean(parts[3]);
-          CustomerProduct cp=new CustomerProduct(parts[0],parts[1],date);
-          cp.setPaid(paid);
-          return cp;
+    public CustomerProduct createRecordFrom(String line){
+        String[] parts=line.split(",");
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date=LocalDate.parse(parts[2],formatter);
+        boolean paid=Boolean.parseBoolean(parts[3]);
+        CustomerProduct cp=new CustomerProduct(parts[0],parts[1],date);
+        cp.setPaid(paid);
+        return cp;
+    }
+
+    public void saveToFile(){
+        try{
+            PrintWriter fptrW =new PrintWriter(new FileWriter("lab4/"+filename));
+            for(int i = 0 ; i<records.size();i++){
+                CustomerProduct user = records.get(i);
+                fptrW.println(user.lineRepresentation());
+            }
+            fptrW.close();
         }
-
-      @Override
-              public void saveToFile() throws IOException {
-          try (BufferedWriter bw=new BufferedWriter(new FileWriter(filename))){
-              for (CustomerProduct b:records){
-                  bw.write(b.lineRepresentation());
-                  bw.newLine();
-              }
-          }
+        catch(Exception e){
+            System.out.println("Error Writing to the file( "+ e.getMessage()+" ).");
         }
-
-
     }
 
 
-
-
-
+}

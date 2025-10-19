@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class AdminRole {
@@ -16,7 +17,7 @@ public class AdminRole {
     }
 
     public EmployeeUser[] getListOfEmployees(){
-        ArrayList <EmployeeUser> records = database.returnAllRecords();
+        ArrayList<EmployeeUser> records = new ArrayList<>(database.returnAllRecords());
         EmployeeUser[] employeesArray = new EmployeeUser[records.size()];
         for(int i =0 ; i<records.size();i++){
             employeesArray[i]= records.get(i);
@@ -29,13 +30,13 @@ public class AdminRole {
             database.deleteRecord(key);
             database.saveToFile();
             System.out.println("Employee removed successfully.");
-    }else{
-        System.out.println("Employee ID not found.");
+        }else{
+            System.out.println("Employee ID not found.");
+        }
     }
-    }
-    
+
     public void logout(){
         database.saveToFile();
-        System.out.println("All data saved. logging out"); 
+        System.out.println("All data saved. logging out");
     }
 }

@@ -3,13 +3,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-public class EmployeeUserDatabase {
+public class EmployeeUserDatabase extends Database {
     private static ArrayList <EmployeeUser> records ;
     private String filename;
 
-    public EmployeeUserDatabase(String filename){
-        this.filename=filename;
-        records = new ArrayList<>();
+    public EmployeeUserDatabase(String filename) {
+        super(filename);
     }
 
     public void readFromFile(){
@@ -33,53 +32,6 @@ public class EmployeeUserDatabase {
     public EmployeeUser createRecordFrom (String line){
         String[]parts= line.split(",");
         return new EmployeeUser(parts[0], parts[1], parts[2], parts[3], parts[4]);
-    }
-
-    public static ArrayList<EmployeeUser> returnAllRecords(){
-        return records;
-    }
-
-    public boolean contains(String key ){
-        for(int i =0 ; i<records.size();i++){
-            if(records.get(i).getSearchKey().equals(key)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public EmployeeUser getRecord(String key){
-        // if(!contains(key)){
-        //     System.out.println("");
-        //     return null;
-        // }
-        // else{
-        for(EmployeeUser user : records){
-            if(user.getSearchKey().equals(key)) {
-            return user;
-            }
-        }
-        // System.out.println("the employeeID not found");
-        return null;
-    }
-
-    public void insertRecord(EmployeeUser record){
-        if(!contains(record.getSearchKey())){
-            records.add(record);
-        }else{
-            System.err.println("Employee ID already exists.");
-        }
-    }
-
-    public void deleteRecord(String key){
-        EmployeeUser deletedUser=getRecord(key);
-        if(deletedUser==null){
-            System.out.println("the employeeID not found.");
-            return;
-        }
-        int indexOfDeletedUser=records.indexOf(deletedUser);
-        records.remove(indexOfDeletedUser);
-        
     }
 
     public void saveToFile(){

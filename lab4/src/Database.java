@@ -51,6 +51,7 @@ public void deleteRecord(String key){
             if(Objects.equals(key,i.getSearchKey()))
                 return i;
             }
+        System.out.println("Record Not Found");
         return null;
     }
 }

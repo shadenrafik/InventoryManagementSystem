@@ -1,4 +1,4 @@
-package lab4;
+
 import java.util.*;
 
 public class AdminRole {
@@ -17,7 +17,7 @@ public class AdminRole {
     }
 
     public EmployeeUser[] getListOfEmployees(){
-        ArrayList <EmployeeUser> records = EmployeeUserDatabase.returnAllRecords();
+        ArrayList <EmployeeUser> records = database.returnAllRecords();
         EmployeeUser[] employeesArray = new EmployeeUser[records.size()];
         for(int i =0 ; i<records.size();i++){
             employeesArray[i]= records.get(i);

@@ -1,4 +1,4 @@
-package lab4;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -35,6 +35,7 @@ public class EmployeeRole {
     }
 
     public CustomerProduct[] getListOfPurchasingOperations(){
+
 
 
     }

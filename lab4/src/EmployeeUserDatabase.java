@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 public class EmployeeUserDatabase {
-    private static ArrayList <EmployeeUser> records ;
+    private ArrayList <EmployeeUser> records ;
     private String filename;
 
     public EmployeeUserDatabase(String filename){
@@ -37,7 +37,7 @@ public class EmployeeUserDatabase {
         return new EmployeeUser(parts[0], parts[1], parts[2], parts[3], parts[4]);
     }
 
-    public static ArrayList<EmployeeUser> returnAllRecords(){
+    public  ArrayList<EmployeeUser> returnAllRecords(){
         return records;
     }
 

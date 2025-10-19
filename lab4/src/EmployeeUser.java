@@ -1,7 +1,6 @@
-package lab4;
 import java.util.*;
 
-public class EmployeeUser {
+public class EmployeeUser implements Record {
     private String employeeId ;
     private String name;
     private String email;
@@ -9,13 +8,7 @@ public class EmployeeUser {
     private String phoneNumber;
     
     EmployeeUser(String employeeId, String name, String email, String address, String phoneNumber){
-        if(checkEmployeeID(employeeId)){
-            this.employeeId = employeeId;
-        }
-        else{
-            this.employeeId = null;
-            System.out.println("Invalid ID number (can not two Employees have the same ID)");
-        }
+        this.employeeId = employeeId;
         this.name = name;
         if(checkEmail(email)){
             this.email=email;
@@ -36,15 +29,15 @@ public class EmployeeUser {
 
     }
 
-    private boolean checkEmployeeID (String ID){                    //make sure it is unique
-        ArrayList <EmployeeUser> checker = EmployeeUserDatabase.returnAllRecords();
-        for ( EmployeeUser user : checker){
-            if(user.getSearchKey().equals(ID)){
-                return false;
-            }
-        }
-        return true;
-    }
+    // private boolean checkEmployeeID (String ID){                    //make sure it is unique
+    //     ArrayList <EmployeeUser> checker = EmployeeUserDatabase.returnAllRecords();
+    //     for ( EmployeeUser user : checker){
+    //         if(user.getSearchKey().equals(ID)){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
 
     private boolean checkEmail (String email){
         return email.contains("@")&&email.contains(".");
@@ -57,10 +50,11 @@ public class EmployeeUser {
         }
         return true;
     }
+    @Override
     public String lineRepresentation(){
         return employeeId+","+name+","+email+","+address+","+phoneNumber;
     }
-    
+    @Override
     public String getSearchKey(){
         return employeeId;
     }

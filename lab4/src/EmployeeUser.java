@@ -12,6 +12,7 @@ public class EmployeeUser implements Record {
             this.employeeId = employeeId;
         }
         else{
+
             this.employeeId = null;
             System.out.println("Invalid ID number (can not two Employees have the same ID)");
         }

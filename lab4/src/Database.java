@@ -32,7 +32,7 @@ public void deleteRecord(String key){
     for(T i : records){
         if(Objects.equals(key, i.getSearchKey())){
             records.remove(i);
-            System.out.println("Record deleted successfully.");
+            System.out.println("Record deleted.");
             return;
         }}
     System.out.println("Record not found.");
@@ -51,7 +51,7 @@ public void deleteRecord(String key){
             if(Objects.equals(key,i.getSearchKey()))
                 return i;
             }
-        System.out.println("Record Not Found");
+        System.out.println("Record not found");
         return null;
     }
 }

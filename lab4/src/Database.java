@@ -12,7 +12,6 @@ public abstract class Database <T extends Record>{
 //have different functions in different classes
 // fa cant be written here (abstract only)
     public abstract void readFromFile();
-    public abstract T createRecordFrom(String line);
     public abstract void saveToFile();
 
     //returns array of records
@@ -21,18 +20,23 @@ public abstract class Database <T extends Record>{
     }
 
     public void insertRecord(T record) {
-        records.add(record);
+        if (!contains(record.getSearchKey())) {
+            records.add(record);}
         System.out.println("Record Created");
     }
-//FFFFFFFFFFFFFFFFFFFFIIIIIIIIIIIIIIIXXXXXXXXXXXXXXXXX
-    public void deleteRecord(String key) {
-        for (T i : records) {
-            if (Objects.equals(key, i.getSearchKey())){
-                records.remove(i);}
-            System.out.println("Record Deleted");}
-            System.out.println("Record Not Found");
+
+    public abstract T createRecordFrom (String line);
+
+
+public void deleteRecord(String key){
+    for(T i : records){
+        if(Objects.equals(key, i.getSearchKey())){
+            records.remove(i);
+            System.out.println("Record deleted successfully.");
             return;
-        }
+        }}
+    System.out.println("Record not found.");
+}
 
     public boolean contains(String key) {
         for (T i : records) {
@@ -43,7 +47,6 @@ public abstract class Database <T extends Record>{
 
     //returns 1 obj
     public T getRecord(String key){
-
         for(T i: records){
             if(Objects.equals(key,i.getSearchKey()))
                 return i;

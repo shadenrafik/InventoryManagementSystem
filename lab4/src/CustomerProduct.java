@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 // declaring variables
-public class CustomerProduct {
+public class CustomerProduct implements Record {
     private String customerSSN;
     private String productID;
     private LocalDate purchaseDate;
@@ -50,6 +50,7 @@ public class CustomerProduct {
         this.paid=paid;
     }
 
+@Override
     public String getSearchKey(){
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return customerSSN + "," + productID + "," + purchaseDate.format(formatter);

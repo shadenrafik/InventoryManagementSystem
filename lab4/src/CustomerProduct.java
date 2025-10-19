@@ -1,5 +1,7 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-        // declaring variables
+// declaring variables
 public class CustomerProduct {
     private String customerSSN;
     private String productID;

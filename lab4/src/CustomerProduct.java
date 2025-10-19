@@ -1,5 +1,7 @@
 
         // declaring variables
+          // LocalDate is a Java object for storing dates (year, month, day) (easier in date calculations and formatting)
+
 public class CustomerProduct {
     private String customerSSN;
     private String productID;

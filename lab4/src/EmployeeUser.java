@@ -14,15 +14,7 @@ public class EmployeeUser implements Record {
 
     }
 
-    // private boolean checkEmployeeID (String ID){                    //make sure it is unique
-    //     ArrayList <EmployeeUser> checker = EmployeeUserDatabase.returnAllRecords();
-    //     for ( EmployeeUser user : checker){
-    //         if(user.getSearchKey().equals(ID)){
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
+    
 
     @Override
     public String lineRepresentation(){

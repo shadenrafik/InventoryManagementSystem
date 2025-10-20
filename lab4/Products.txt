@@ -1,1 +1,2 @@
-P2394,Laptop,Apple,TechSupplier,10,1500
+P2394,Laptop,Apple,TechSupplier,10,1500.0
+P2392,icelate,star,me,2,25.0

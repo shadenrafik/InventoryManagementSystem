@@ -16,6 +16,10 @@ public class AdminRole {
         System.out.println("Employee added successfully.");
     }
 
+    public boolean employeeExists(String employeeId){
+        return database.contains(employeeId);
+    }
+
     public EmployeeUser[] getListOfEmployees(){
         ArrayList<EmployeeUser> records = database.returnAllRecords();
         EmployeeUser[] employeesArray = new EmployeeUser[records.size()];

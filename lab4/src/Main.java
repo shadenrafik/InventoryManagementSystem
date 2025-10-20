@@ -7,6 +7,22 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
+    public static String validateEmployeeID(String label, AdminRole adminRole) {
+        String input;
+        do {
+            input = validateNonEmpty(label);
+            if (!input.matches("^E[0-9]{4}$")) {
+                System.out.println("Employee ID must start with 'E' followed by 4 digits.");
+                input = "";
+            }
+            if( adminRole.employeeExists(input)) {
+                System.out.println("Employee ID already exists.");
+                input = "";
+            }
+        } while (input.isEmpty());
+        return input;
+    }
+
     public static String validateNonEmpty(String label) {
         String input;
         do {
@@ -75,7 +91,7 @@ public class Main {
         }
     }
 
-    public static LocalDate validateData(String label) {
+    public static LocalDate validateDate(String label) {
         while (true) {
             System.out.print(label);
             String input = scanner.nextLine().trim();
@@ -113,7 +129,7 @@ public class Main {
 
                         switch (choice1) {
                             case 1 -> {
-                                String id = validateNonEmpty("Employee ID: ");
+                                String id = validateEmployeeID("Employee ID: ", admin);
                                 String name = validateName("Name: ");
                                 String email = validateEmail("Email: ");
                                 String address = validateNonEmpty("Address: ");
@@ -179,21 +195,21 @@ public class Main {
                             case 3 -> {
                                 String ssn = validateNonEmpty("Customer SSN: ");
                                 String prodID = validateNonEmpty("Product ID: ");
-                                LocalDate date = validateData("Purchase Date (dd-MM-yyyy): ");
+                                LocalDate date = validateDate("Purchase Date (dd-MM-yyyy): ");
                                 boolean success = employee.purchaseProduct(ssn, prodID, date);
                                 System.out.println(success ? "Purchase successful." : "Purchase failed.");
                             }
                             case 4 -> {
                                 String ssn = validateNonEmpty("Customer SSN: ");
                                 String prodID = validateNonEmpty("Product ID: ");
-                                LocalDate purchaseDate = validateData("Purchase Date (dd-MM-yyyy): ");
-                                LocalDate returnDate = validateData("Return Date (dd-MM-yyyy): ");
+                                LocalDate purchaseDate = validateDate("Purchase Date (dd-MM-yyyy): ");
+                                LocalDate returnDate = validateDate("Return Date (dd-MM-yyyy): ");
                                 double refund = employee.returnProduct(ssn, prodID, purchaseDate, returnDate);
                                 System.out.println(refund == -1 ? "Return failed." : "Return successful. Refund: " + refund);
                             }
                             case 5 -> {
                                 String ssn = validateNonEmpty("Customer SSN: ");
-                                LocalDate date = validateData("Purchase Date (dd-MM-yyyy): ");
+                                LocalDate date = validateDate("Purchase Date (dd-MM-yyyy): ");
                                 boolean paid = employee.applyPayment(ssn, date);
                                 System.out.println(paid ? "Payment applied." : "Payment failed.");
                             }

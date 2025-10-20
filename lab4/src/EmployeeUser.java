@@ -1,5 +1,5 @@
 public class EmployeeUser implements Record {
-    private String employeeId ;
+    private final String employeeId ;
     private String name;
     private String email;
     private String address;

@@ -3,9 +3,9 @@ import java.time.format.DateTimeFormatter;
 
 // declaring variables
 public class CustomerProduct implements Record {
-    private String customerSSN;
-    private String productID;
-    private LocalDate purchaseDate;
+    private final String customerSSN;
+    private final String productID;
+    private final LocalDate purchaseDate;
     private boolean paid;
 
             // constructor aalshan n initialize elobjects

@@ -1,13 +1,15 @@
 import java.util.*;
 
-public abstract class Database <T extends Record>{
-    protected ArrayList<T> records;
-    protected String filename;
+public abstract class Database<T extends Record> {
 
-    public Database(String filename){
+    protected final ArrayList<T> records;
+    protected final String filename;
+
+    public Database(String filename) {
         this.filename = filename;
-        records = new ArrayList<>();
+        this.records = new ArrayList<>();
     }
+
 
 //have different functions in different classes
 // fa cant be written here (abstract only)

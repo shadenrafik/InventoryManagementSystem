@@ -2,7 +2,7 @@
 import java.util.*;
 
 public class AdminRole {
-    private EmployeeUserDatabase database ;
+    private final EmployeeUserDatabase database ;
 
     public AdminRole(){
         database = new EmployeeUserDatabase("Employees.txt");

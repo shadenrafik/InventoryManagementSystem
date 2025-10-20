@@ -1,6 +1,6 @@
     // declaring variables
 public class Product implements Record {
-    private String productID;
+    private final String productID;
     private String productName;
     private String manufacturerName;
     private String supplierName;

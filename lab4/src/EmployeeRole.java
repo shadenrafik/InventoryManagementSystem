@@ -3,8 +3,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class EmployeeRole {
-    private ProductDatabase productsDatabase;
-    private CustomerProductDatabase customerProductDatabase;
+    private final ProductDatabase productsDatabase;
+    private final CustomerProductDatabase customerProductDatabase;
 
     public EmployeeRole(){
         productsDatabase = new ProductDatabase("Products.txt");

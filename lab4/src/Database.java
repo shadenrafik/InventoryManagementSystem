@@ -21,22 +21,28 @@ public abstract class Database <T extends Record>{
 
     public void insertRecord(T record) {
         if (!contains(record.getSearchKey())) {
-            records.add(record);}
-        System.out.println("Record Created");
+            records.add(record);
+            System.out.println("Record Created.");
+        } else {
+            System.out.println("Record already exists.");}
     }
+
 
     public abstract T createRecordFrom (String line);
 
 
-public void deleteRecord(String key){
-    for(T i : records){
-        if(Objects.equals(key, i.getSearchKey())){
-            records.remove(i);
-            System.out.println("Record deleted.");
-            return;
-        }}
-    System.out.println("Record not found.");
-}
+
+    public void deleteRecord(String key) {
+        Iterator <T> i = records.iterator();
+        while (i.hasNext()) {
+            T record = i.next();
+            if (Objects.equals(key, record.getSearchKey())) {
+                i.remove();
+                System.out.println("Record deleted.");
+                return;
+            }
+        }
+        System.out.println("Record not found.");}
 
     public boolean contains(String key) {
         for (T i : records) {
